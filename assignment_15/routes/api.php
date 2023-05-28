@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\v1\PostController;
+use App\Http\Controllers\Api\v1\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,23 @@ use App\Http\Controllers\Api\v1\PostController;
 |
 */
 
-Route::post('/registrationForm',[PostController::class,'store']);
+//Task 1 Route
+Route::post('/registrationForm', [TasksController::class, 'validation']);
+
+//Task 2 route
+Route::get('/home', [TasksController::class, 'home']);
+Route::get('/dashboard', [TasksController::class, 'dashboard']);
+
+//Task 3 route
+//checking log
+Route::get('/checkLog', [TasksController::class, 'checkLog']);
+
+//Task 4
+// middilware to a group route
+Route::middleware(['AuthMiddleware'])->group(function () {
+    Route::get('/profile/{password}', [TasksController::class, 'profile']);
+    Route::get('/settings/{password}', [TasksController::class, 'settings']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
