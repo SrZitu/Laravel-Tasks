@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\TasksController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,18 @@ Route::middleware(['AuthMiddleware'])->group(function () {
     Route::get('/profile/{password}', [TasksController::class, 'profile']);
     Route::get('/settings/{password}', [TasksController::class, 'settings']);
 });
+
+//Task 5 CRUD Routes
+Route::prefix('Products')->group(
+    function () {
+        Route::get('/getAllData', [ProductController::class, 'index']);
+        Route::get('/create', [ProductController::class, 'create']);
+        Route::post('/store', [ProductController::class, 'store']);
+        Route::put('/update/{id}', [ProductController::class, 'update']);
+    }
+);
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

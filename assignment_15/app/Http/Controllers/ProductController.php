@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductResource;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-
-        return view('products.index', compact('products'));
+        return ProductResource::collection(Product::all());
     }
 
     public function create()
@@ -19,18 +20,10 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'name' => 'required',
-            // Add validation rules for other fields
-        ]);
-
-        // Create a new product with the validated data
-        $product = Product::create($validatedData);
-
-        // Redirect to the product index page or show a success message
+        $task = Product::create($request->validated());
+        return ProductResource::make($task);
     }
 
     public function edit($id)
@@ -40,18 +33,10 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'name' => 'required',
-            // Add validation rules for other fields
-        ]);
-
-        $product = Product::findOrFail($id);
-        $product->update($validatedData);
-
-        // Redirect to the product index page or show a success message
+        $product->update($request->validated());
+        return ProductResource::make($product);
     }
 
     public function destroy($id)
