@@ -41,6 +41,7 @@ Route::prefix('Products')->group(
         Route::get('/create', [ProductController::class, 'create']);
         Route::post('/store', [ProductController::class, 'store']);
         Route::put('/update/{id}', [ProductController::class, 'update']);
+        Route::delete('/destroy/{product}', [ProductController::class,'destroy']);
     }
 );
 
@@ -49,3 +50,4 @@ Route::prefix('Products')->group(
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+

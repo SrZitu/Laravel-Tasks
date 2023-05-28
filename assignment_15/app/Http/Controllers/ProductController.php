@@ -39,11 +39,11 @@ class ProductController extends Controller
         return ProductResource::make($product);
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($id);
         $product->delete();
 
-        // Redirect to the product index page or show a success message
     }
+
+
 }
