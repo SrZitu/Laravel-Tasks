@@ -22,8 +22,8 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $task = Product::create($request->validated());
-        return ProductResource::make($task);
+        $product = Product::create($request->validated());
+        return ProductResource::make($product);
     }
 
     public function edit($id)
@@ -42,8 +42,5 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
     }
-
-
 }

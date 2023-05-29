@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\TasksController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -45,7 +46,8 @@ Route::prefix('Products')->group(
     }
 );
 
-
+//Task 6
+Route::post('/contact', ContactController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
