@@ -8,6 +8,7 @@ use App\Http\Resources\PostResource;
 use App\Http\Requests\StorepostsRequest;
 use App\Http\Requests\UpdatepostsRequest;
 
+
 class PostController extends Controller
 {
     /**
@@ -15,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return StorepostsRequest::collection(Product::all());
+        //return StorepostsRequest::collection(Product::all());
+        $products = Product::all();
+        return view('page.index', compact('products'));
     }
 
     /**
@@ -23,51 +26,60 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('page.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorepostsRequest $request)
     {
         $product = Product::create($request->validated());
-        return PostResource::make($product);
+        // return ProductResource::make($product);
+
+        return redirect()->route('page.index')->with('success', 'Product created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        return PostResource::make($product);
+        $product = Product::findOrFail($id);
+
+        return view('page.index', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         $product = Product::findOrFail($id);
 
-        return view('products.edit', compact('product'));
+        return view('page.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatepostsRequest $request, Product $product)
+    public function update(UpdatepostsRequest $request, $id)
     {
+        $product = Product::findOrFail($id);
+
         $product->update($request->validated());
-        return PostResource::make($product);
+
+        return redirect()->route('page.index')->with('success', 'Product updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        $product = Product::findOrFail($id);
         $product->delete();
-        return response()->noContent();
+
+        return redirect()->route('page.index')->with('success', 'Product deleted successfully');
     }
 }

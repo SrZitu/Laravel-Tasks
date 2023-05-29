@@ -36,15 +36,15 @@ Route::middleware(['AuthMiddleware'])->group(function () {
 });
 
 //Task 5 CRUD With Postman Routes
-Route::prefix('Products')->group(
-    function () {
-        Route::get('/getAllData', [ProductController::class, 'index']);
-        Route::get('/create', [ProductController::class, 'create']);
-        Route::post('/store', [ProductController::class, 'store']);
-        Route::put('/update/{id}', [ProductController::class, 'update']);
-        Route::delete('/destroy/{product}', [ProductController::class, 'destroy']);
-    }
-);
+// Route::prefix('Products')->group(
+//     function () {
+//         Route::get('/getAllData', [ProductController::class, 'index']);
+//         Route::get('/create', [ProductController::class, 'create']);
+//         Route::post('/store', [ProductController::class, 'store']);
+//         Route::put('/update/{id}', [ProductController::class, 'update']);
+//         Route::delete('/destroy/{product}', [ProductController::class, 'destroy']);
+//     }
+// );
 //task 5 with blade route
 Route::get('/homepage', [ProductController::class, 'index'])->name('page.index');
 Route::get('/create', [ProductController::class, 'create'])->name('page.create');
