@@ -2,9 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\v1\TasksController;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Api\v1\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,13 @@ use App\Http\Controllers\ProductController;
 Route::post('/registrationForm', [TasksController::class, 'validation']);
 
 //Task 2 route
-Route::get('/home', [TasksController::class, 'home']);
-Route::get('/dashboard', [TasksController::class, 'dashboard']);
+Route::get('/dashboard', function () {
+    return "I'm from dashboard";
+});
+
+Route::get('/home', function () {
+    return redirect('/dashboard', 302);
+});
 
 //Task 3 route
 //checking log

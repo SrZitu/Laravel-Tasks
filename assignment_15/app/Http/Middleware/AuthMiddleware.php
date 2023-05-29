@@ -19,8 +19,7 @@ class AuthMiddleware
         if ($password == '12345') {
             return $next($request);
         } else {
-            // Redirect to the desired URL
-            //return redirect("/redirect2");
+            
             return response()->json('unauthorized', 401);
         }
     }

@@ -29,14 +29,14 @@ class TasksController extends Controller
     /*=======================================================================
     task 2. Create a route /home that redirects to /dashboard using a 302 redirect.
     ========================================================================*/
-    public function home()
-    {
-        return redirect('/dashboard');
-    }
-    public function dashboard()
-    {
-        return "I'm dashboard redirected from home";
-    }
+    // public function home()
+    // {
+    //     return redirect('/dashboard');
+    // }
+    // public function dashboard()
+    // {
+    //     return "I'm dashboard redirected from home";
+    // }
 
     /*====================================================================================
     task 3.Task 3: Global Middleware
