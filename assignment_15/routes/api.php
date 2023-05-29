@@ -35,21 +35,36 @@ Route::middleware(['AuthMiddleware'])->group(function () {
     Route::get('/settings/{password}', [TasksController::class, 'settings']);
 });
 
-//Task 5 CRUD Routes
+//Task 5 CRUD With Postman Routes
 Route::prefix('Products')->group(
     function () {
         Route::get('/getAllData', [ProductController::class, 'index']);
         Route::get('/create', [ProductController::class, 'create']);
         Route::post('/store', [ProductController::class, 'store']);
         Route::put('/update/{id}', [ProductController::class, 'update']);
-        Route::delete('/destroy/{product}', [ProductController::class,'destroy']);
+        Route::delete('/destroy/{product}', [ProductController::class, 'destroy']);
     }
 );
+//task 5 with blade route
+Route::get('/homepage', [ProductController::class, 'index'])->name('page.index');
+Route::get('/create', [ProductController::class, 'create'])->name('page.create');
+Route::post('/store', [ProductController::class, 'store'])->name('page.store');
+Route::get('/page/{id}/edit', [ProductController::class, 'edit'])->name('page.edit');
+Route::put('/page/{id}', [ProductController::class, 'update'])->name('page.update');
+Route::delete('/page/{id}', [ProductController::class, 'destroy'])->name('page.destroy');
+
 
 //Task 6
 Route::post('/contact', ContactController::class);
 
+//Task 7
+Route::apiResource('/product',PostController::class);
+
+//Task 8
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
