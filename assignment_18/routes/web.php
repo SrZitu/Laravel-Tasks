@@ -14,4 +14,11 @@ use App\Http\Controllers\ActionController;
 |
 */
 
-Route::get('/postData',[ActionController::class,'postData']);
+Route::controller(ActionController::class)->group(function () {
+    Route::get('/postData', 'postData');
+    Route::get('/categoryPost/{id}', 'categoryPost');
+     Route::get('/posts/{id}/delete', 'softDelete');
+     Route::get('/softData', 'softData');
+});
+
+
