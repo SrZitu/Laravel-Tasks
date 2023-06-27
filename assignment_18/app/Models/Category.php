@@ -10,8 +10,13 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-    
+
     public function posts(){
        return  $this->hasMany(Post::class);
+    }
+
+    public function LatestPost()
+    {
+        return $this->posts()->orderBy('id', 'desc')->first();
     }
 }
