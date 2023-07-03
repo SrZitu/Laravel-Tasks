@@ -15,4 +15,14 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public static function totalPostsCountByCategory($categoryId)
+    {
+        return self::where('category_id', $categoryId)->count();
+    }
+
+    public static function softDeletedData()
+    {
+        return self::onlyTrashed()->get();
+    }
 }

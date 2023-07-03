@@ -8,12 +8,9 @@
             <div id="project-list" class="col-lg-11 col-xl-9 col-xxl-8">
                 @foreach ($categories as $category)
                 <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-
                     <div class="card-body p-0">
-
                         <div class="d-flex align-items-center">
                             <div class="p-5">
-
                                 <h2>{{ $category->name }}</h2>
                                 @if ($category->LatestPost())
                                     <div>
@@ -23,15 +20,11 @@
                                 @else
                                     <p>No posts found for this category.</p>
                                 @endif
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
                 @endforeach
-
             </div>
         </div>
     </div>

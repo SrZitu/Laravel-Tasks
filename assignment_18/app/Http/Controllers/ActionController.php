@@ -13,15 +13,15 @@ class ActionController extends Controller
     public function postData()
     {
         $postdata = Post::with('category')->get();
-
-        return view('pages.home', compact('postdata'));
+        return  $postdata;
     }
 
     //Task 6
-    public function categoryPost($id)
+    //controller method for testing in Postman
+    public function categoryPost($category_id)
     {
-        $postCount = Post::where('category_id', $id)->count();
-        return $postCount;
+        $postCount = Post::totalPostsCountByCategory($category_id);
+        return response()->json(['Count' => $postCount]);
     }
 
     //Task 7
@@ -36,10 +36,19 @@ class ActionController extends Controller
     }
 
     //Task 8
+    //controller method for testing in Postman
     public function softData()
     {
-        $softData = Post::onlyTrashed()->get();
+        $softData = Post::softDeletedData();;
         return $softData;
+    }
+
+    //Task 9
+    public function allPost()
+    {
+        $postdata = Post::with('category')->get();
+
+        return view('pages.home', compact('postdata'));
     }
 
     //Task 10
@@ -61,7 +70,7 @@ class ActionController extends Controller
         return $category;
     }
 
-    //Task 12 
+    //Task 12
     public function CategoriesLatestPosts()
     {
         $categories = Category::all();

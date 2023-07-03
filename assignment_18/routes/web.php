@@ -15,10 +15,14 @@ use App\Http\Controllers\ActionController;
 */
 
 Route::controller(ActionController::class)->group(function () {
+    Route::get('/','allPost');
+
+
     Route::get('/postData', 'postData');
-    Route::get('/categoryPost/{id}', 'categoryPost');
+    Route::get('/categoryPost/{category_id}', 'categoryPost');
     Route::get('/posts/{id}/delete', 'softDelete');
     Route::get('/softData', 'softData');
+    Route::get('/allPost', 'allPost');
 
     Route::get('/categories/{id}/posts', 'specificCatPost');
     Route::get('/categories/{id}/latestpost',  'latestPost');
