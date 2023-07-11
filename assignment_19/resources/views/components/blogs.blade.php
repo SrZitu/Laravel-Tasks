@@ -21,13 +21,15 @@
             document.getElementById('content-div').classList.remove('hidden');
 
             response.data.forEach((item) => {
+                let title = item['title'].substr(0, 80) + (item['title'].length > 200 ? '...' : '');
+                let content = item['content'].substr(0, 119) + (item['content'].length > 200 ? '...' : '');
                 document.getElementById('blogid').innerHTML += `
                     <div class="max-w-md bg-white rounded-lg overflow-hidden shadow-md card transition duration-500 transform hover:scale-105">
-                        <img class="w-full h-48 object-cover" src="${item['image']}" alt="Blog Post Image">
+                        <img class="w-full h-56 w-full object-cover object-center" src="${item['image']}" alt="Blog Post Image">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800">${item['title']}</h3>
-                            <p class="mt-2 text-gray-600">${item['content']}</p>
-                            <a href="#" class="mt-4 inline-block px-4 py-2 text-sm font-medium leading-none bg-purple-700 text-white rounded-full hover:bg-gray-700">Read More</a>
+                            <a href="/blog/${item['id']}"><h3 class="text-xl font-semibold text-gray-800">${title}</h3> </a>
+                            <p class="mt-2 text-gray-600">${content}</p>
+                            <a href="/blog/${item['id']}" class="mt-4 inline-block px-4 py-2 text-sm font-medium leading-none bg-purple-700 text-white rounded-full hover:bg-gray-700">Read More</a>
                         </div>
                     </div>
                 `;

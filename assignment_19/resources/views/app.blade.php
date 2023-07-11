@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 
-    <title>Blog</title>
+    <title>@yield('title')</title>
     <script src="{{ asset('js/axios.min.js') }}"></script>
 </head>
 

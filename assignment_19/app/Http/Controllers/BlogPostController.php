@@ -11,14 +11,21 @@ class BlogPostController extends Controller
     {
         return view('pages.blog_post');
     }
+    public function blog()
+    {
+        return BlogPost::get();
+    }
 
-    // public function show($id)
-    // {
-    //     $post = BlogPost::find($id);
-    //     return response()->json($post);
-    // }
-    public function blog(){
-       return BlogPost::get();
+    public function blog_detail()
+    {
+        return view('pages.blog_details');
+    }
+    public function show($id)
+    {
+        $post= BlogPost::findOrFail($id);
+        // return  BlogPost::findOrFail($id);
+        return view('pages.blog_details',compact('post'));
 
     }
+
 }
