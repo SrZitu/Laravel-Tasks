@@ -1,4 +1,4 @@
-<footer class="bg-purple-800 text-white">
+<footer class="bg-purple-800 text-white py-8 mt-14">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-between">
         <div class="w-full md:w-1/3 lg:w-1/4 mb-6 md:mb-0">

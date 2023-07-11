@@ -9,13 +9,16 @@ class BlogPostController extends Controller
 {
     public function index()
     {
-        $posts = BlogPost::all();
-        return view('pages.blog_post',compact('posts'));
+        return view('pages.blog_post');
     }
 
-    public function show($id)
-    {
-        $post = BlogPost::find($id);
-        return response()->json($post);
+    // public function show($id)
+    // {
+    //     $post = BlogPost::find($id);
+    //     return response()->json($post);
+    // }
+    public function blog(){
+       return BlogPost::get();
+
     }
 }
