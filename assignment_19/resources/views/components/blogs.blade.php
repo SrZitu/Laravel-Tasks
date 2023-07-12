@@ -25,7 +25,7 @@
                 let content = item['content'].substr(0, 119) + (item['content'].length > 200 ? '...' : '');
                 document.getElementById('blogid').innerHTML += `
                     <div class="max-w-md bg-white rounded-lg overflow-hidden shadow-md card transition duration-500 transform hover:scale-105">
-                        
+
                         <img class="w-full h-56 w-full object-cover object-center" src="${item['image']}" alt="Blog Post Image">
                         <div class="p-6">
                             <a href="/blog/${item['id']}" ><h3 class="text-xl font-semibold text-gray-800">${title}</h3> </a>
@@ -41,7 +41,5 @@
     }
 
 
-    function redirectToDetails(id) {
-        window.location.href = `/blog/${id}`;
-    }
+
 </script>
