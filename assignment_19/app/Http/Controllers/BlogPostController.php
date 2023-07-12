@@ -16,17 +16,10 @@ class BlogPostController extends Controller
         return BlogPost::get();
     }
 
-    public function blog_detail()
-    {
-        return view('pages.blog_details');
-    }
     public function show($id)
     {
-        // $post= BlogPost::findOrFail($id);
-
-        // return view('components.single_blog_detail',compact('post'));
-
-        return  BlogPost::findOrFail($id);
+       $post= BlogPost::with('comment')->findOrFail($id);
+        return view('pages.blog_details',compact('post'));
     }
 
 

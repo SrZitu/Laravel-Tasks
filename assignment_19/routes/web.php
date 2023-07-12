@@ -24,11 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogPostController::class,'index']);
 Route::get('/blog', [BlogPostController::class,'blog']);
-
-
-Route::get('/blog/details', [BlogPostController::class,'blog_detail']);
-
 Route::get('/blog/{id}', [BlogPostController::class,'show']);
-Route::get('/comment', [BlogPostController::class,'store']);
+
 
 

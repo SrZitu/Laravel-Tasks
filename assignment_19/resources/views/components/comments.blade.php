@@ -1,8 +1,8 @@
 <div class="container mx-auto mt-8">
     <div class="mt-10">
-        <h2 class="text-center font-bold mb-4">Comments</h2>
+        <h2 class="font-bold mb-4">Comments</h2>
 
-        <div class="flex flex-col items-center">
+        {{-- <div class="flex flex-col ">
             <input
                 type="text"
                 placeholder="Name"
@@ -19,17 +19,17 @@
             >
                 Add Comment
             </button>
-        </div>
+        </div> --}}
 
         <div class="mt-8">
-            @foreach($comments as $comment)
-            <div class="flex mb-4 items-start">
-                <div class="h-8 w-8 bg-gray-300 rounded-full"></div>
-                <div class="ml-4">
-                    <p class="font-semibold">{{ $comment->author }}</p>
-                    <p class="text-gray-500">{{ $comment->content }}</p>
+            @foreach($post->comment as $comment)
+                <div class="flex mb-4 items-start">
+                    <div class="h-8 w-8 bg-gray-300 rounded-full"> <img src="{{$comment->image}}" alt=""></div>
+                    <div class="ml-4">
+                        <p class="font-semibold">{{$comment->author}}</p>
+                        <p class="text-gray-500">{{ $comment->comment }}</p>
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>

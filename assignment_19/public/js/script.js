@@ -12,8 +12,7 @@ window.addEventListener('scroll', () => {
 
 navLinks.forEach((link) => {
   link.addEventListener('click', function(event) {
-    event.preventDefault();
-
+    
     navLinks.forEach((link) => {
       link.classList.remove('text-gray-800');
       link.classList.remove('font-bold'); // Remove the 'font-bold' class from all links

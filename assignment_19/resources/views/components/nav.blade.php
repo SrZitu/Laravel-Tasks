@@ -3,7 +3,7 @@
       <h1 class="text-2xl font-bold"><a href="{{url('/')}}">My Website</a></h1>
       <ul class="flex justify-center items-center space-x-4">
         <li><a href="{{url('/')}}" class="text-white font-bold transition-all duration-300 ease-in-out">Home</a></li>
-        <li><a href="{{url('/blog/details')}}" class="text-white transition-all duration-300 ease-in-out">Blog Details</a></li>
+        <li><a href="" class="text-white transition-all duration-300 ease-in-out">Blog Details</a></li>
       </ul>
     </div>
   </nav>
