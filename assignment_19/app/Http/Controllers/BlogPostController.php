@@ -22,10 +22,12 @@ class BlogPostController extends Controller
     }
     public function show($id)
     {
-        $post= BlogPost::findOrFail($id);
-        // return  BlogPost::findOrFail($id);
-        return view('pages.blog_details',compact('post'));
+        // $post= BlogPost::findOrFail($id);
 
+        // return view('components.single_blog_detail',compact('post'));
+
+        return  BlogPost::findOrFail($id);
     }
+
 
 }

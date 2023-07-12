@@ -15,7 +15,7 @@
             document.getElementById('content-div').classList.add('hidden');
 
             let response = await axios.get(url);
-            console.log(response);
+
 
             document.getElementById('loading-div').classList.add('hidden');
             document.getElementById('content-div').classList.remove('hidden');
